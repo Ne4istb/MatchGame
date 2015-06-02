@@ -1,0 +1,105 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#01CFFE"
+    tools:context=".StartMenuActivity">
+
+    <LinearLayout
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:weightSum="2"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/kitchenButton"
+                    android:background="@drawable/cloud"
+                    android:drawablePadding="20dp"
+                    android:longClickable="false"
+                    android:layout_margin="20dp"
+                    android:text="@string/kitchen_button"
+                    android:textColor="#f8172b2f"
+                    android:textStyle="bold|normal|italic"
+                    android:typeface="serif"
+                    android:textSize="@dimen/abc_text_size_large_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bathRoomButton"
+                    android:background="@drawable/cloud"
+                    android:drawablePadding="20dp"
+                    android:longClickable="false"
+                    android:layout_margin="20dp"
+                    android:text="@string/bathroom_button"
+                    android:textColor="#f8172b2f"
+                    android:textStyle="bold|normal|italic"
+                    android:typeface="serif"
+                    android:textSize="@dimen/abc_text_size_large_material" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/dollButton"
+                    android:background="@drawable/cloud"
+                    android:drawablePadding="20dp"
+                    android:longClickable="false"
+                    android:layout_margin="20dp"
+                    android:text="@string/doll_button"
+                    android:textColor="#f8172b2f"
+                    android:textStyle="bold|normal|italic"
+                    android:typeface="serif"
+                    android:textSize="@dimen/abc_text_size_large_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

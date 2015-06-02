@@ -1,0 +1,2 @@
+sky color 01CFFE
+focused candidate 009E0F

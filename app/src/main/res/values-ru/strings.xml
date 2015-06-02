@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Соответствия</string>
+
+    <string name="kitchen_button">Кухня</string>
+    <string name="bathroom_button">Ванная</string>
+    <string name="doll_button">Кукла</string>
+    <string name="time">Время:</string>
+    <string name="ok">Ok</string>
+    <string name="congratilatuons">Поздравляем!</string>
+</resources>
