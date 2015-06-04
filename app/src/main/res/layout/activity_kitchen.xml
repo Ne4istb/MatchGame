@@ -7,72 +7,81 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/kitchenView"
         android:layout_gravity="center_vertical"
         android:src="@drawable/kitchen"
         />
 
     <HorizontalScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#33FFFFFF"
+
         android:layout_alignParentBottom="true">
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_height="100dp"
         android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        >
 
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cake"
-            android:background="#33FFFFFF"
+            android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@drawable/cake" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cake2"
-            android:background="#33FFFFFF"
+            android:id="@+id/pan"
+           android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@drawable/cake" />
+            android:src="@drawable/pan" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cake3"
-            android:background="#33FFFFFF"
+            android:id="@+id/wisp"
+            android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@drawable/cake" />
+            android:src="@drawable/wisp" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cak4"
-            android:background="#33FFFFFF"
+            android:id="@+id/pepper"
+            android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@drawable/cake" />
+            android:src="@drawable/pepper" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cake5"
-            android:background="#33FFFFFF"
+            android:id="@+id/board"
+            android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@drawable/cake" />
+            android:src="@drawable/board" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cak6"
-            android:background="#33FFFFFF"
+            android:id="@+id/pot"
+            android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@drawable/cake" />
+            android:src="@drawable/pot" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cake7"
-            android:background="#33FFFFFF"
+            android:id="@+id/plate"
+            android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@drawable/cake" />
-
+            android:src="@drawable/plate" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/meat"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/meat" />
 
 
     </LinearLayout>
