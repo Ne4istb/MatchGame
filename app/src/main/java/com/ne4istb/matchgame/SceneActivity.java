@@ -28,13 +28,18 @@ public class SceneActivity extends Activity {
 
     private String getTimeDifferenceString() {
 
-        long finishTime = System.currentTimeMillis();
+        long timeDifference = getTimeDifference();
 
-        int totalSecs = (int) ((finishTime - startTime) / 1000);
+        int totalSecs = (int) (timeDifference / 1000);
         int minutes = (totalSecs % 3600) / 60;
         int seconds = totalSecs % 60;
 
         return String.format("%02d:%02d", minutes, seconds);
+    }
+
+    private long getTimeDifference() {
+        long finishTime = System.currentTimeMillis();
+        return finishTime - startTime;
     }
 
     private void showCongratulationDialog(String timeString) {
@@ -60,8 +65,21 @@ public class SceneActivity extends Activity {
         dialog.show();
     }
 
-    protected void Vibrate() {
+    protected void vibrate() {
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(500);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putLong("TimeDiff", getTimeDifference());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        long timeDiff = savedInstanceState.getLong("TimeDiff");
+        startTime -= timeDiff;
     }
 }

@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ne4istb.matchgame.BathroomActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bathroomView"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/bathroom"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#55000000"
+
+        android:layout_alignParentBottom="true">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        >
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shower"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/shower" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/brush"
+           android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/brush" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bast"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/bast" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/soap"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/soap" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gel"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/gel" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/comb"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/comb" />
+
+    </LinearLayout>
+    </HorizontalScrollView>
+
+</RelativeLayout>

@@ -31,7 +31,12 @@
         </activity>
         <activity
             android:name=".KitchenActivity"
-            android:label="@string/title_activity_kitchen"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".BathroomActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize" >

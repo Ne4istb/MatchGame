@@ -38,6 +38,7 @@ public class StartMenuActivity extends Activity {
 
         setOnMenuButtonClickListener(kitchenBtn, KitchenActivity.class);
         setOnMenuButtonClickListener(dollBtn, DollActivity.class);
+        setOnMenuButtonClickListener(bathRoomBtn, BathroomActivity.class);
     }
 
     private void setOnMenuButtonClickListener(Button button, final Class<?> activityClass) {
