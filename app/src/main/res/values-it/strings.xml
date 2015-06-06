@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Gioco per AVQ</string>
+
+    <string name="kitchen_button">Cucina</string>
+    <string name="bathroom_button">Bagno</string>
+    <string name="doll_button">Vestizione</string>
+
+    <string name="time">Tempo:</string>
+    <string name="ok">Ok</string>
+    <string name="congratilatuons">Congratulazioni!</string>
+
+</resources>

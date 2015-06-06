@@ -87,7 +87,7 @@ public class RoomActivity extends SceneActivity {
             }
 
             private boolean isTouchedInZone(MotionEvent event, Zone zone) {
-                return event.getX() > zone.getLeft() && event.getX() < zone.getRight()
+                return zone != null && event.getX() > zone.getLeft() && event.getX() < zone.getRight()
                         && event.getY() > zone.getTop() && event.getY() < zone.getBottom();
             }
         });

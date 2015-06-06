@@ -3,13 +3,10 @@
 
     <string name="kitchen_button">Kitchen</string>
     <string name="bathroom_button">Bathroom</string>
-    <string name="doll_button">Doll</string>
-    <string name="title_activity_doll">DollActivity</string>
+    <string name="doll_button">Dressing</string>
 
     <string name="time">Time:</string>
     <string name="ok">Ok</string>
     <string name="congratilatuons">Congratulations!</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 </resources>
