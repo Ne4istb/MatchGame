@@ -24,7 +24,6 @@
         </activity>
         <activity
             android:name=".DollActivity"
-            android:label="@string/title_activity_doll"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize" >
