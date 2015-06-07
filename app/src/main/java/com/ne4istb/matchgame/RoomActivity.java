@@ -1,5 +1,6 @@
 package com.ne4istb.matchgame;
 
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
@@ -8,12 +9,16 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class RoomActivity extends SceneActivity {
 
+    private final String activityName;
     private View rootView;
     private int state = 0;
     private String selected;
@@ -23,13 +28,19 @@ public class RoomActivity extends SceneActivity {
     protected static HashMap<String, String> matches;
     protected static float fieldWidth;
     protected static float fieldHeight;
-    protected static String[] Stuff = new String[]{};
-    protected static String[] Areas = new String[]{};
+    protected static String[] stuff = new String[]{};
+    protected static String[] areas = new String[]{};
 
     protected HashMap<String, Zone> zones = new HashMap<>();
 
     protected float factor;
     protected int offset;
+    private ArrayList<String> shuffled;
+
+    public RoomActivity(String activityName) {
+        super();
+        this.activityName = activityName;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +49,55 @@ public class RoomActivity extends SceneActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
+        int activityId = getViewResourceId("layout", "activity_" + activityName);
+        setContentView(activityId);
+
         rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+
+        initRoom(activityName);
 
         calculateDimensions();
 
+        shuffleButtons();
+
         selected = "none";
+
     }
 
-    protected void initButton(String name) {
-        final ImageButton button = getImageButton(name);
+    private void shuffleButtons() {
+
+        if (shuffled == null) {
+            shuffled = new ArrayList<>(Arrays.asList(stuff));
+                        Collections.shuffle(shuffled);
+        }
+
+        int layoutId = getViewResourceId("id", activityName + "Layout");
+        LinearLayout layout = (LinearLayout) rootView.findViewById(layoutId);
+
+        layout.removeAllViews();
+
+        for (String thing : shuffled) {
+            ImageButton button = createImageButton(thing);
+            layout.addView(button);
+        }
+    }
+
+    private ImageButton createImageButton(String name) {
+
+        ImageButton button = new ImageButton(this);
+        button.setBackgroundColor(Color.TRANSPARENT);
+        button.setScaleType(ImageView.ScaleType.FIT_XY);
+        button.setImageResource(getViewResourceId("drawable", name));
+        button.setId(Math.abs(name.hashCode()));
         setOnMenuButtonClickListener(button, name);
+
+        return button;
     }
 
-    protected void initRoom(String name) {
+    private void initRoom(String name) {
 
-        int viewResourceId = getResources().getIdentifier(
-                name + "View",
-                "id",
-                getPackageName());
+        int viewResourceId = getViewResourceId("id", name + "View");
 
         ImageView room = (ImageView) rootView.findViewById(viewResourceId);
 
@@ -110,10 +152,7 @@ public class RoomActivity extends SceneActivity {
         if (selected == "none")
             return;
 
-        int focusedResourceId = getResources().getIdentifier(
-                selected,
-                "drawable",
-                getPackageName());
+        int focusedResourceId = getViewResourceId("drawable", selected);
 
         final ImageButton button = getImageButton(selected);
         button.setImageResource(focusedResourceId);
@@ -129,8 +168,7 @@ public class RoomActivity extends SceneActivity {
     }
 
     private ImageButton getImageButton(String name) {
-        int resourceId = getResources().getIdentifier(name, "id", getPackageName());
-        return (ImageButton) rootView.findViewById(resourceId);
+        return (ImageButton) rootView.findViewById(Math.abs(name.hashCode()));
     }
 
     private void setOnMenuButtonClickListener(ImageButton button, final String name) {
@@ -145,13 +183,8 @@ public class RoomActivity extends SceneActivity {
     }
 
     private void selectButton(ImageButton view, String name) {
-        int focusedResourceId = getResources().getIdentifier(
-                name + "_focused",
-                "drawable",
-                getPackageName());
-
-        ImageButton image = view;
-        image.setImageResource(focusedResourceId);
+        int focusedResourceId = getViewResourceId("drawable", name + "_focused");
+        view.setImageResource(focusedResourceId);
     }
 
     @Override
@@ -159,6 +192,7 @@ public class RoomActivity extends SceneActivity {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt("State", state);
         savedInstanceState.putStringArrayList("Resolved", resolved);
+        savedInstanceState.putStringArrayList("Shuffled", shuffled);
         savedInstanceState.putString("Selected", selected);
     }
 
@@ -167,18 +201,23 @@ public class RoomActivity extends SceneActivity {
 
         super.onRestoreInstanceState(savedInstanceState);
 
+        if (savedInstanceState == null)
+            return;
+
         state = savedInstanceState.getInt("State");
 
+        shuffled = savedInstanceState.getStringArrayList("Shuffled");
+        shuffleButtons();
+
         ArrayList<String> resolvedButtons = savedInstanceState.getStringArrayList("Resolved");
-        for(String name: resolvedButtons){
+        for (String name : resolvedButtons) {
             hideSelectedButton(name);
         }
 
         String selectedButton = savedInstanceState.getString("Selected");
         if (selectedButton != null && selectedButton != "none") {
             selected = selectedButton;
-            ImageButton button = getImageButton(selected);
-            selectButton(button, selected);
+            selectButton(getImageButton(selected), selected);
         }
     }
 }

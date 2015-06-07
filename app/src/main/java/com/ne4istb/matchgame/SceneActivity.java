@@ -70,6 +70,10 @@ public class SceneActivity extends Activity {
         v.vibrate(500);
     }
 
+    protected int getViewResourceId(String type, String name) {
+        return getResources().getIdentifier(name, type, getPackageName());
+    }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);

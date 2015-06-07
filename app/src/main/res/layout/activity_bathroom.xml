@@ -19,55 +19,11 @@
 
         android:layout_alignParentBottom="true">
     <LinearLayout
+        android:id="@+id/bathroomLayout"
         android:orientation="horizontal"
         android:layout_height="100dp"
         android:layout_width="wrap_content"
         >
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/shower"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/shower" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/brush"
-           android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/brush" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bast"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/bast" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/soap"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/soap" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/gel"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/gel" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/comb"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/comb" />
 
     </LinearLayout>
     </HorizontalScrollView>

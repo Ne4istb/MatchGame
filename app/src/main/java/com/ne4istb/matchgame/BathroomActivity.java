@@ -7,29 +7,16 @@ import java.util.HashMap;
 
 public class BathroomActivity extends RoomActivity {
 
-    static {
+    public BathroomActivity() {
+        super("bathroom");
 
-        numberOfStuff = 6;
+        stuff = new String[]{"brush", "bast", "comb", "soap", "shower", "gel"};
+        areas = new String[]{"sink", "bath", "shelf", "mirror"};
+
+        numberOfStuff = stuff.length;
 
         fieldWidth = 1280;
         fieldHeight = 717;
-
-        Stuff = new String[]{
-                "brush",
-                "bast",
-                "comb",
-                "soap",
-                "shower",
-                "gel",
-                "none"
-        };
-
-        Areas = new String[]{
-                "sink",
-                "bath",
-                "shelf",
-                "mirror"
-        };
 
         matches = new HashMap<>();
         matches.put("brush", "sink");
@@ -44,20 +31,7 @@ public class BathroomActivity extends RoomActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_bathroom);
-
-        initRoom("bathroom");
-        initButtons();
         initZones();
-    }
-
-    private void initButtons() {
-        initButton("bast");
-        initButton("brush");
-        initButton("gel");
-        initButton("soap");
-        initButton("shower");
-        initButton("comb");
     }
 
     private void initZones() {

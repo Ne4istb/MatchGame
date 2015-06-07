@@ -1,16 +1,31 @@
 package com.ne4istb.matchgame;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 
 public class DollActivity extends SceneActivity {
 
+    public static final int OFFSET = 1000;
     int state = 0;
     private View rootView;
+
+    private ArrayList<Integer> shuffled;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,19 +38,27 @@ public class DollActivity extends SceneActivity {
 
         rootView = getWindow().getDecorView().findViewById(android.R.id.content);
 
-        initButtons(rootView);
+        initButtons();
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt("State", state);
+        savedInstanceState.putIntegerArrayList("Shuffled", shuffled);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
+        if(savedInstanceState == null)
+            return;
+
         state = savedInstanceState.getInt("State");
+
+        shuffled = savedInstanceState.getIntegerArrayList("Shuffled");
+        initButtons();
 
         for (int i=1; i <=state; i++)
         {
@@ -43,19 +66,54 @@ public class DollActivity extends SceneActivity {
         }
     }
 
-    private void initButtons(final View rootView) {
+    private void initButtons() {
 
-        final ImageButton doll1btn = (ImageButton) rootView.findViewById(R.id.doll1Button);
-        final ImageButton doll2btn = (ImageButton) rootView.findViewById(R.id.doll2Button);
-        final ImageButton doll3btn = (ImageButton) rootView.findViewById(R.id.doll3Button);
-        final ImageButton doll4btn = (ImageButton) rootView.findViewById(R.id.doll4Button);
-        final ImageButton doll5btn = (ImageButton) rootView.findViewById(R.id.doll5Button);
+        if (shuffled == null) {
+            shuffled = new ArrayList<>(Arrays.asList(new Integer[]{1,2,3,4,5}));
+            Collections.shuffle(shuffled);
+        }
 
-        setDollOnClickListener(doll1btn, 1);
-        setDollOnClickListener(doll2btn, 2);
-        setDollOnClickListener(doll3btn, 3);
-        setDollOnClickListener(doll4btn, 4);
-        setDollOnClickListener(doll5btn, 5);
+        int dolLayoutId = getViewResourceId("id", "dollLayout");
+        LinearLayout dollLayout = (LinearLayout) rootView.findViewById(dolLayoutId);
+
+        dollLayout.removeAllViews();
+
+        for (Integer index : shuffled) {
+            ImageButton button = createDollImageButton(index);
+            dollLayout.addView(button);
+        }
+
+        int starLayoutId = getViewResourceId("id", "starLayout");
+        LinearLayout starLayout = (LinearLayout) rootView.findViewById(starLayoutId);
+
+        starLayout.removeAllViews();
+
+        for (Integer index : shuffled) {
+            RelativeLayout starView = createStarView(index);
+            starLayout.addView(starView);
+        }
+    }
+
+    private ImageButton createDollImageButton(int index) {
+
+        ImageButton button = new ImageButton(this);
+
+        button.setBackgroundColor(Color.TRANSPARENT);
+        button.setScaleType(ImageView.ScaleType.FIT_XY);
+        button.setImageResource(getViewResourceId("drawable", "doll" + index));
+        button.setId(10000 + index);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+
+        layoutParams.gravity = Gravity.CENTER_VERTICAL;
+        layoutParams.weight = 1;
+        button.setLayoutParams(layoutParams);
+
+        setDollOnClickListener(button, index);
+
+        return button;
     }
 
     private void setDollOnClickListener(ImageButton doll5btn, final int index) {
@@ -80,14 +138,47 @@ public class DollActivity extends SceneActivity {
         });
     }
 
+    private RelativeLayout createStarView(Integer index) {
+
+        RelativeLayout layout = new RelativeLayout(DollActivity.this);
+
+        layout.setId(OFFSET + index);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        layoutParams.weight = 1;
+        layout.setLayoutParams(layoutParams);
+        layout.setVisibility(View.INVISIBLE);
+
+        ImageView starImage = new ImageView(DollActivity.this);
+        starImage.setImageResource(R.drawable.star);
+
+        layout.addView(starImage);
+
+        TextView textView = new TextView(DollActivity.this);
+        RelativeLayout.LayoutParams textLayoutParams = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        textLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        textLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
+        textView.setLayoutParams(textLayoutParams);
+        textView.setText(String.valueOf(index));
+        textView.setTextAppearance(DollActivity.this, android.R.style.TextAppearance_Small);
+        textView.setTextColor(Color.BLACK);
+        textView.setTypeface(Typeface.SERIF, Typeface.BOLD);
+
+        layout.addView(textView);
+
+        return layout;
+    }
+
+
     private void showStar(int index) {
 
-        int starResourceId = getResources().getIdentifier(
-                "dollStar" + index,
-                "id",
-                getPackageName());
-
-        final RelativeLayout starLayout = (RelativeLayout) rootView.findViewById(starResourceId);
+        final RelativeLayout starLayout = (RelativeLayout) rootView.findViewById(OFFSET + index);
         starLayout.setVisibility(View.VISIBLE);
     }
 

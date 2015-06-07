@@ -19,69 +19,11 @@
 
         android:layout_alignParentBottom="true">
     <LinearLayout
+        android:id="@+id/kitchenLayout"
         android:orientation="horizontal"
         android:layout_height="100dp"
         android:layout_width="wrap_content"
         >
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cake"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/cake" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pan"
-           android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/pan" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/wisp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/wisp" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pepper"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/pepper" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/board"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/board" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pot"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/pot" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/plate"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/plate" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/meat"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/meat" />
 
 
     </LinearLayout>

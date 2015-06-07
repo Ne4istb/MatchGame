@@ -16,65 +16,11 @@
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:orientation="horizontal"
-            android:weightSum="5">
-
-            <ImageButton
-                android:id="@+id/doll5Button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:src="@drawable/doll5" />
-
-            <ImageButton
-                android:id="@+id/doll3Button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:src="@drawable/doll3" />
-
-            <ImageButton
-                android:id="@+id/doll1Button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:src="@drawable/doll1" />
-
-            <ImageButton
-                android:id="@+id/doll4Button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:src="@drawable/doll4" />
-
-
-            <ImageButton
-                android:id="@+id/doll2Button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:src="@drawable/doll2" />
-        </LinearLayout>
+            android:id="@+id/dollLayout"
+            android:weightSum="5"/>
 
         <LinearLayout
+            android:id="@+id/starLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
