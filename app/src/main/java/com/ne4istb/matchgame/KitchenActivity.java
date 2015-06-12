@@ -14,6 +14,8 @@ public class KitchenActivity extends RoomActivity {
         areas = new String[]{"Sink", "Refrigerator", "Stove", "Shelf"};
 
         numberOfStuff = stuff.length;
+
+        fieldWidth = 1280;
         fieldHeight = 717;
 
         matches = new HashMap<>();
